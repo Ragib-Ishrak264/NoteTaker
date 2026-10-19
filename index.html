@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="window">
+    <header class="toolbar">
+      <div class="toolbar-group">
+        <button id="sidebar-toggle-btn" class="tb-btn" title="Toggle Sidebar (Cmd+Ctrl+S)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+        </button>
+        <button id="view-toggle-btn" class="tb-btn" title="Toggle List / Gallery View">
+          <svg id="view-icon-list" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          <svg id="view-icon-gallery" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </button>
+        <button id="delete-btn" class="tb-btn" title="Delete Note (Backspace)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+        </button>
+      </div>
+
+      <div class="toolbar-center">
+        <button id="format-btn" class="tb-btn" title="Format Text (Aa)">
+          <span class="aa-text">Aa</span>
+        </button>
+        <button id="checklist-btn" class="tb-btn" title="Checklist (Cmd+Shift+L)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+        </button>
+        <button id="table-btn" class="tb-btn" title="Insert Table">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+        </button>
+        <button id="attach-btn" class="tb-btn" title="Attach Media">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        </button>
+        <input type="file" id="image-file-input" accept="image/*,application/pdf" multiple class="hidden">
+        <button id="diagram-btn" class="tb-btn" title="Sketch / Drawing">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4-12 12H6v-4L18 2z"/><path d="M14 6l4 4"/></svg>
+        </button>
+        <button id="lock-btn" class="tb-btn" title="Lock Note">
+          <svg id="lock-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </button>
+        <button id="find-toggle-btn" class="tb-btn" title="Find in Note (Cmd+F)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg>
+        </button>
+        <button id="share-btn" class="tb-btn" title="Share & Export">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        </button>
+      </div>
+
+      <div class="toolbar-group">
+        <button id="theme-btn" class="tb-btn" title="Toggle Dark/Light Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <button id="new-note-btn" class="tb-btn primary" title="New Note (Cmd+N)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar-folders" id="folders-sidebar">
+        <div class="folders-header">
+          <span class="sidebar-title">iCloud</span>
+        </div>
+        <div class="folder-list" id="folder-list"></div>
+        <div class="tags-section">
+          <div class="tags-header">Tags</div>
+          <div class="sidebar-tags" id="sidebar-tags"></div>
+        </div>
+        <div class="sidebar-footer">
+          <button id="new-folder-btn" class="action-link-btn">+ New Folder</button>
+        </div>
+      </aside>
+
+      <section class="notes-list-pane" id="notes-list-pane">
+        <div class="list-search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="search-input" placeholder="Search (Cmd+Opt+F)..." autocomplete="off">
+          <button id="list-sort-btn" class="sort-menu-btn" title="Sort Options">•••</button>
+        </div>
+        <div class="notes-container list-mode" id="notes-container"></div>
+      </section>
+
+      <main class="editor-pane" id="editor-pane">
+        <div class="trash-alert hidden" id="trash-alert">
+          <span id="trash-status-text">This note is in Recently Deleted.</span>
+          <div class="trash-buttons">
+            <button id="restore-trash-btn" class="subtle-btn">Restore</button>
+            <button id="delete-forever-btn" class="subtle-btn danger">Delete Forever</button>
+          </div>
+        </div>
+
+        <div class="find-bar hidden" id="find-bar">
+          <input type="text" id="find-input" placeholder="Find in note...">
+          <span id="find-count" class="find-count">0 of 0</span>
+          <button id="find-prev-btn" class="find-btn" title="Previous">▲</button>
+          <button id="find-next-btn" class="find-btn" title="Next">▼</button>
+          <button id="find-close-btn" class="find-btn" title="Close">✕</button>
+        </div>
+
+        <div class="editor-scroll">
+          <div class="editor-center">
+            <div class="date-header" id="date-header" title="Right-click for word count"></div>
+            <div id="locked-placeholder" class="locked-placeholder hidden">
+              <div class="lock-shield">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <h3>This note is locked</h3>
+              <p id="lock-hint-text" class="lock-hint-text"></p>
+              <button id="unlock-btn" class="apple-btn">View Note</button>
+            </div>
+            <div id="editor" contenteditable="true" spellcheck="true"></div>
+          </div>
+        </div>
+
+        <div id="img-toolbar" class="img-floating-toolbar hidden">
+          <button class="img-btn-size" data-size="25%">S</button>
+          <button class="img-btn-size" data-size="50%">M</button>
+          <button class="img-btn-size" data-size="75%">L</button>
+          <button class="img-btn-size" data-size="100%">Full</button>
+          <button id="img-edit-sketch-btn" class="img-btn-action hidden">✏️ Edit</button>
+          <button id="img-delete-btn" class="img-btn-action danger">🗑 Delete</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="format-popover" class="popover hidden">
+    <div class="popover-row styles-row">
+      <button class="pop-style-btn" data-block="h1">Title</button>
+      <button class="pop-style-btn" data-block="h2">Heading</button>
+      <button class="pop-style-btn" data-block="h3">Subheading</button>
+      <button class="pop-style-btn" data-block="p">Body</button>
+      <button class="pop-style-btn" data-block="pre">Monospaced</button>
+    </div>
+    <div class="popover-divider"></div>
+    <div class="popover-row inline-row">
+      <button class="pop-fmt-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+      <button class="pop-fmt-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+      <button class="pop-fmt-btn" data-cmd="underline" title="Underline"><u>U</u></button>
+      <button class="pop-fmt-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+    </div>
+    <div class="popover-divider"></div>
+    <div class="popover-row list-row">
+      <button class="pop-list-btn" data-cmd="insertUnorderedList" title="Bulleted List">• Bulleted</button>
+      <button class="pop-list-btn" id="dashed-list-btn" title="Dashed List">— Dashed</button>
+      <button class="pop-list-btn" data-cmd="insertOrderedList" title="Numbered List">1. Numbered</button>
+      <button class="pop-list-btn" id="pop-checklist-btn" title="Checklist">☑ Checklist</button>
+    </div>
+    <div class="popover-divider"></div>
+    <div class="popover-row action-row">
+      <button class="pop-act-btn" id="pop-quote-btn">Block Quote</button>
+      <button class="pop-act-btn" data-cmd="indent">Indent</button>
+      <button class="pop-act-btn" data-cmd="outdent">Outdent</button>
+    </div>
+    <div class="popover-divider"></div>
+    <label class="popover-toggle">
+      <input type="checkbox" id="move-checked-bottom-opt"> Move checked items to bottom
+    </label>
+  </div>
+
+  <div id="share-popover" class="popover hidden">
+    <button class="pop-menu-item" id="export-html-btn">Export as HTML</button>
+    <button class="pop-menu-item" id="export-text-btn">Export as Text</button>
+    <button class="pop-menu-item" id="export-pdf-btn">Print / PDF</button>
+    <div class="popover-divider"></div>
+    <button class="pop-menu-item" id="backup-btn">Backup All Notes (JSON)</button>
+    <button class="pop-menu-item" id="restore-btn">Restore Notes (JSON)</button>
+    <input type="file" id="restore-file-input" accept=".json" class="hidden">
+  </div>
+
+  <div id="sort-popover" class="popover hidden">
+    <div class="pop-group-label">Sort by</div>
+    <button class="pop-menu-item" data-sort="updated">Date Edited</button>
+    <button class="pop-menu-item" data-sort="created">Date Created</button>
+    <button class="pop-menu-item" data-sort="title">Title</button>
+    <div class="popover-divider"></div>
+    <label class="popover-toggle">
+      <input type="checkbox" id="group-dates-toggle" checked> Group by Date
+    </label>
+  </div>
+
+  <div id="context-menu" class="context-menu hidden">
+    <div class="ctx-item" id="ctx-pin">Pin Note</div>
+    <div class="ctx-item" id="ctx-move">Move to Folder...</div>
+    <div class="ctx-item" id="ctx-duplicate">Duplicate</div>
+    <div class="ctx-item" id="ctx-lock">Lock Note</div>
+    <div class="ctx-item" id="ctx-export">Export...</div>
+    <div class="ctx-divider"></div>
+    <div class="ctx-item danger" id="ctx-delete">Delete</div>
+  </div>
+
+  <div id="folder-context-menu" class="context-menu hidden">
+    <div class="ctx-item" id="ctx-folder-rename">Rename Folder</div>
+    <div class="ctx-item danger" id="ctx-folder-delete">Delete Folder</div>
+  </div>
+
+  <div id="word-count-popover" class="popover word-count-popover hidden">
+    <div class="wc-row"><span>Words:</span> <strong id="wc-words">0</strong></div>
+    <div class="wc-row"><span>Characters:</span> <strong id="wc-chars">0</strong></div>
+    <div class="wc-row"><span>Paragraphs:</span> <strong id="wc-paras">0</strong></div>
+    <div class="wc-row"><span>Read Time:</span> <strong id="wc-read">~0 min</strong></div>
+  </div>
+
+  <div id="diagram-modal" class="modal hidden">
+    <div class="modal-window">
+      <div class="modal-header">
+        <span id="draw-title">Sketch</span>
+        <div id="pdf-nav" class="pdf-nav hidden">
+          <button id="pdf-prev-btn" class="subtle-btn" title="Previous page">‹</button>
+          <span id="pdf-page-label">1 / 1</span>
+          <button id="pdf-next-btn" class="subtle-btn" title="Next page">›</button>
+        </div>
+        <div class="modal-header-actions">
+          <button id="draw-insert-btn" class="apple-btn">Insert</button>
+          <button id="draw-close-btn" class="icon-close">✕</button>
+        </div>
+      </div>
+      <div class="diagram-toolbar">
+        <div class="d-group">
+          <button class="d-tool active" data-tool="pen" title="Pen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>Pen</button>
+          <button class="d-tool" data-tool="fountain" title="Fountain Pen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>Fountain</button>
+          <button class="d-tool" data-tool="brush" title="Brush"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/></svg>Brush</button>
+          <button class="d-tool" data-tool="pencil" title="Pencil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></svg>Pencil</button>
+          <button class="d-tool" data-tool="highlighter" title="Highlighter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11-6 6v3h9l3-3"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg>Highlighter</button>
+          <button class="d-tool" data-tool="eraser" title="Eraser"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>Eraser</button>
+        </div>
+        <div class="d-group">
+          <button class="d-tool icon-only" data-tool="line" title="Line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 19 19 5"/></svg></button>
+          <button class="d-tool icon-only" data-tool="arrow" title="Arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5"/><path d="M9 5h10v10"/></svg></button>
+          <button class="d-tool icon-only" data-tool="box" title="Box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="14" rx="1.5"/></svg></button>
+          <button class="d-tool icon-only" data-tool="oval" title="Oval"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="9" ry="6.5"/></svg></button>
+          <button class="d-tool icon-only" data-tool="diamond" title="Diamond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3 21 12 12 21 3 12Z"/></svg></button>
+          <button class="d-tool icon-only" data-tool="text" title="Text"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7V5h16v2"/><path d="M12 5v14"/><path d="M9 19h6"/></svg></button>
+        </div>
+        <div class="d-group d-colors">
+          <button class="d-swatch active" data-color="#000000" style="--c:#000000" title="Black"></button>
+          <button class="d-swatch" data-color="#6b7280" style="--c:#6b7280" title="Gray"></button>
+          <button class="d-swatch" data-color="#ffffff" style="--c:#ffffff" title="White"></button>
+          <button class="d-swatch" data-color="#ef4444" style="--c:#ef4444" title="Red"></button>
+          <button class="d-swatch" data-color="#f97316" style="--c:#f97316" title="Orange"></button>
+          <button class="d-swatch" data-color="#e8b100" style="--c:#e8b100" title="Gold"></button>
+          <button class="d-swatch" data-color="#facc15" style="--c:#facc15" title="Yellow"></button>
+          <button class="d-swatch" data-color="#22c55e" style="--c:#22c55e" title="Green"></button>
+          <button class="d-swatch" data-color="#06b6d4" style="--c:#06b6d4" title="Cyan"></button>
+          <button class="d-swatch" data-color="#3b82f6" style="--c:#3b82f6" title="Blue"></button>
+          <button class="d-swatch" data-color="#8b5cf6" style="--c:#8b5cf6" title="Purple"></button>
+          <button class="d-swatch" data-color="#ec4899" style="--c:#ec4899" title="Pink"></button>
+          <input type="color" id="draw-color" value="#000000" title="Custom color">
+        </div>
+        <div class="d-group">
+          <input type="range" id="draw-size" min="1" max="32" value="3" title="Size">
+          <label class="d-chk"><input type="checkbox" id="draw-smooth" checked> Streamline</label>
+          <label class="d-chk"><input type="checkbox" id="draw-fill"> Fill</label>
+          <button id="draw-grid-btn" class="subtle-btn">Grid</button>
+          <button id="draw-pdf-btn" class="subtle-btn d-pdf-btn" title="Open a PDF to annotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>PDF</button>
+          <input type="file" id="pdf-file-input" accept="application/pdf" class="hidden">
+        </div>
+        <div class="d-group">
+          <button id="draw-undo-btn" class="subtle-btn">Undo</button>
+          <button id="draw-redo-btn" class="subtle-btn">Redo</button>
+          <button id="draw-clear-btn" class="subtle-btn danger">Clear</button>
+        </div>
+      </div>
+      <div class="canvas-viewport">
+        <canvas id="diagram-canvas" width="1000" height="600"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
