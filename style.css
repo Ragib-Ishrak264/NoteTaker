@@ -1254,3 +1254,6 @@ body {
     color: #000000 !important;
   }
 }
+
+.folders-header { display: flex; align-items: center; gap: 8px; }
+.app-logo { border-radius: 6px; flex-shrink: 0; }
